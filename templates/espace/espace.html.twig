@@ -1,0 +1,178 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace utilisateur - Plat'Use{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/user.css') }}">{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        {% if message is defined %}
+            <div class="alert alert-success text-center" role="alert" style="margin-top:100px !important;">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        {% if erreur is defined %}
+            <div class="alert alert-danger text-center" role="alert" style="margin-top:100px !important;">
+                {{ erreur }}
+            </div>
+        {% endif %}
+        
+        <section>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-7">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active onglet lien_onglet" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">Mes scores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link onglet lien_onglet" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                aria-controls="profile" aria-selected="false">Mon compte</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="tab-content col-md-8" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h1>Mes meilleurs temps</h1>
+                        <hr>
+                        <div class="row div_score">
+                            <div class="col-md-4">
+                                Niveau
+                            </div>
+                            <div class="col-md-4">
+                                Nom du niveau
+                            </div>
+                            <div class="col-md-4">
+                                Temps effectués (en secondes)
+                            </div>
+                        </div>
+                        {% if meillTemps1 != "" %}
+                            <div class="row div_score">
+                                <div class="col-md-4">
+                                    1
+                                </div>
+                                <div class="col-md-4">
+                                    {{ meillTemps1.nom_niveau }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ meillTemps1.temps_score }}
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if meillTemps2 != "" %}
+                            <div class="row div_score">
+                                <div class="col-md-4">
+                                    2
+                                </div>
+                                <div class="col-md-4">
+                                    {{ meillTemps2.nom_niveau }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ meillTemps2.temps_score }}
+                                </div>
+                            </div>
+                            <div class="row div_score">
+                                <div class="col-md-8">
+                                    Temps total
+                                </div>
+                                <div class="col-md-4">
+                                    {{ tempsTotal }}
+                                </div>
+                            </div>
+                        {% endif %}
+                        <br><br>
+                        <h1>Mes temps effectués</h1>
+                        <hr>
+                        <div class="row div_score">
+                            <div class="col-md-4">
+                                Niveau
+                            </div>
+                            <div class="col-md-4">
+                                Nom du niveau
+                            </div>
+                            <div class="col-md-4">
+                                Temps effectués (en secondes)
+                            </div>
+                        </div>
+                        {% for score in scores %}
+                            <div class="row div_score">
+                                <div class="col-md-4">
+                                    {{ score.numero_niveau }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ score.nom_niveau }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ score.temps_score }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="margin-left:40%;">
+                        {{ form_start(formUpdate) }}
+                            <label for="pseudoUser">Votre pseudo:</label>
+                            <br>
+                            {{ form_widget(formUpdate.pseudoUser, {'attr': {'class': 'form-control form_update'}}) }}
+                            {{ form_errors(formUpdate.pseudoUser) }}
+                            <br>
+                            <label for="emailUser">Votre adresse email:</label>
+                            <br>
+                            {{ form_widget(formUpdate.emailUser, {'attr': {'class': 'form-control form_update'}}) }}
+                            {{ form_errors(formUpdate.emailUser) }}
+                            <br>
+                            <label for="ancient_password">Votre mot de passe actuel:</label>
+                            <br>
+                            <input type="password" name="ancient_password" id="ancient_password" class="form-control form_update">
+                            <br>
+                            <label for="password">Votre nouveau mot de passe:</label>
+                            <br>
+                            <input type="password" name="password" id="password" class="form-control form_update">
+                            <br>
+                            <label for="password_confirm">Confirmer le nouveau mot de passe:</label>
+                            <br>
+                            <input type="password" name="password_confirm" id="password_confirm" class="form-control form_update">
+                            <br><br>
+                            <button type="submit" class="btn btn_form">Modifier</button>
+                            <button type="button" class="btn btn_form" data-toggle="modal" data-target="#modalDes">Se désincrire</button>
+                        {{ form_end(formUpdate) }}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Modal -->
+        <div class="modal fade" id="modalDes" tabindex="-1" role="dialog" aria-labelledby="modalDes" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Êtes-vous sûr ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>cd
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Une fois désinscrit, vous perdrez toutes vos données, vos temps sauvegardés et vous perdrez également l'accès au jeu.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn_form" data-dismiss="modal">Non</button>
+                        <a href="{{ path('desinscription') }}">
+                            <button type="button" class="btn btn_form">Oui</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <section>
+            <div class="alert alert-danger text-center" role="alert" style="margin-top:100px !important;">
+                Veuillez vous connecter pour accéder à votre espace.
+            </div>
+        </section>
+    {% endif %}
+    
+{% endblock %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Accueil - Bienvenue{% endblock %}</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+        <link rel="shortcut icon" href="{{ asset('assets/img/logo/logo_p.png') }}" type="image/x-icon">
+        <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap-grid.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap-reboot.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <!-- Bouton Back to Top -->
+        <a id="bouton_btt" href="#" style="display: none;"><i class="fas fa-arrow-circle-up"></i></a>
+        
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="border-bottom:2px solid #1fc21f;">
+            <a href="{{ path('accueil') }}">
+                <img class="logo_navbar" src="{{ asset('assets/img/logo/logo_p.png') }}" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link color_vert" href="{{ path('accueil') }}">ACCUEIL</a>
+                    <p class="nav-link color_vert nav_tir">-</p>
+                    <a class="nav-item nav-link color_vert" href="{{ path('telecharger') }}">TELECHARGER</a>
+                    <p class="nav-link color_vert nav_tir">-</p>
+                    <a class="nav-item nav-link color_vert" href="{{ path('forum') }}">FORUM</a>
+                </div>
+            </div>
+            {% if not app.user %}
+            <div class="icon_user">
+                <a class="color_vert" title="Connexion / Inscription" href="{{ path('user') }}">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+            {% else %}
+            <div class="icon_parametre">
+                <a class="color_vert" title="Mon Espace" href="{{ path('espace') }}">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+                <a class="color_vert" title="Déconnexion" href="{{ path('logout') }}" style="margin-left:30px;">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+            </div>
+            {% endif %}
+        </nav>
+
+        {% block body %}{% endblock %}
+
+        <!-- Footer -->
+        <footer class="background_noir" style="margin-top:50px;">
+            <div class="flex justify-content-center">
+                <img src="{{ asset('assets/img/logo/logo_g.png') }}" alt="logo">
+            </div>
+            <br>
+            <div class="text-center">
+                <a class="lien_footer" href="">A PROPOS DE NOUS</a> |
+                <a class="lien_footer" href="">ASSISTANCE</a> |
+                <a class="lien_footer" href="">NOUS CONTACTER</a>
+            </div>
+            <br>
+            <div class="text-center">
+                <a class="lien_footer" href="">CONFIDENTIALITE EN LIGNE</a> - 
+                <a class="lien_footer" href="">MENTIONS LEGALES</a>
+            </div>
+        </footer>
+
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/main.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

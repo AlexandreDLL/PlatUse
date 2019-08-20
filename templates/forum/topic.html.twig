@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plat'Use - Forum{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/forum.css') }}">{% endblock %}
+
+{% block body %}
+    <!-- Titre Catégorie -->
+    <section>
+        <div class="text-center">
+            <h1 class="titre_categorie">{{ topic.nom_categorie }}</h1>
+        </div>
+    </section>
+    <br>
+    
+    <!-- Topic -->
+    <section>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h3>{{ topic.titre_topic }}</h3>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                {{ topic.texte_topic }}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <p>
+                    <strong>Auteur</strong>
+                    <br>
+                    {% if topic.id_user != NULL %}
+                        {{ topic.pseudo_user }}
+                    {% else %}
+                        Anonyme
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Réponse -->
+    {% if reponses is defined  %}
+    <section>
+        {% for reponse in reponses %}
+            {% if loop.index > 1 %}
+            <hr>
+            {% endif %}   
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    {{ reponse.texte_reponse }}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <p>
+                        <strong>Auteur</strong>
+                        <br>
+                        {% if reponse.id_user != NULL %}
+                            {{ reponse.pseudo_user }}
+                        {% else %}
+                            Anonyme
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if app.user %}
+    <!-- Formulaire de réponse topic -->
+    <section>
+        {{ form_start(formReponse) }}
+            <div class="flex justify-content-center">
+                <label class="label_forum" for="texte">Votre texte:</label>
+            </div>
+            <div class="flex justify-content-center">
+                {{ form_widget(formReponse.texteReponse, {'attr': {'cols': '150', 'rows': '15'}}) }}
+            </div>
+            <br>
+            <div class="flex justify-content-center">
+                <button type="submit" class="btn btn_form">Répondre</button>
+            </div>
+            <br>
+        {{ form_end(formReponse) }}
+    </section>
+    {% endif %}
+{% endblock %}

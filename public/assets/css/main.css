@@ -1,0 +1,131 @@
+/* Bouton Back to Top */
+@keyframes back_top{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+@keyframes anim_resume{
+    0%{color: #ecefef;}
+    50%{color: #969696;}
+    100%{color: black;}
+}
+@keyframes anim_img1{
+    0%{margin-left: 2000px;}
+    100%{margin-left: 0px;}
+}
+@keyframes anim_img2{
+    0%{margin-left: -2000px;}
+    100%{margin-left: 0px;}
+}
+.resume{
+    animation-name: anim_resume;
+    animation-duration: 2s;
+}
+.img1{
+    animation-name: anim_img1;
+    animation-duration: 3s;
+}
+.img2{
+    animation-name: anim_img2;
+    animation-duration: 3s;
+}
+#bouton_btt{
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    z-index: 99;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    font-size: 40px;
+    color: #1fc21f;
+}
+#bouton_btt:hover{
+    color: green;
+    animation-name: back_top;
+    animation-duration: 1500ms;
+}
+
+/* Navbar */
+.logo_navbar{
+    height: 60px;
+}
+.icon_user{
+    font-size: 25px;
+    margin-left: 62px;
+}
+.icon_parametre{
+    font-size: 25px;
+}
+.nav_tir{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+}
+.nav_tir:hover{
+    cursor: pointer;
+}
+html, body{
+    height: 100%;
+}
+
+/* Footer */
+footer{
+    border-top: 2px solid #1fc21f;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+.lien_footer{
+    text-decoration: none !important;
+}
+
+/* Class General */
+section{
+    margin-top: 100px;
+    background-color: #ecefef;
+    border-top: 1px solid  #1fc21f;
+    border-bottom: 1px solid  #1fc21f;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.color_vert{
+    color: #1fc21f !important;
+}
+a.color_vert:hover{
+    color: green !important;
+    cursor: pointer;
+}
+.background_noir{
+    background-color: #3a3636;
+}
+.flex{
+    display: flex;
+}
+.btn_form{
+    border: 1px outset #1fc21f;
+    border-radius: 15px;
+    background-color: white;
+    width: 200px;
+}
+.btn_form:hover{
+    background-color: #3a3636;
+    color: white;
+}
+
+/* Modification de class Bootstrap */
+.navbar{
+    background-color: #3a3636 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.nav-link{
+    font-size: 20px !important;
+}
+@media (min-width: 992px){
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+}
+.form-control{
+    width: 20% !important;
+}

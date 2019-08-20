@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plat'Use - Forum{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/forum.css') }}">{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <a href="#" id="btn_reglement" class="lien_forum">
+                    <h4>{{ categorie1.nomCategorie }}</h4>
+                </a>
+                <p>
+                    Dernier sujet:
+                    <a href="{{ path('topic',{'id':topicRecent1.id_topic}) }}" class="lien_forum">{{ topicRecent1.titre_topic }}</a>
+                </p>
+            </div>
+            <div class="col-md-3">
+                <a href="#" id="btn_maj" class="lien_forum">
+                    <h4>{{ categorie2.nomCategorie }}</h4>
+                </a>
+                <p>
+                    Dernier sujet:
+                    <a href="{{ path('topic',{'id':topicRecent2.id_topic}) }}" class="lien_forum">{{ topicRecent2.titre_topic }}</a>
+                </p>
+            </div>
+            <div class="col-md-3">
+                <a href="#" id="btn_astuce" class="lien_forum">
+                    <h4>{{ categorie3.nomCategorie }}</h4>
+                </a>
+                <p>
+                    Dernier sujet:
+                    <a href="{{ path('topic',{'id':topicRecent3.id_topic}) }}" class="lien_forum">{{ topicRecent3.titre_topic }}</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Règlement -->
+    <section id="reglement">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col">
+                <h1 class="titre_categorie">Règlement</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row div_topic">
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <h4>Titre</h4>
+            </div>
+            <div class="col-md-3">
+                <h4>Auteur</h4>
+            </div>
+        </div>
+        {% for topic1 in topics1 %}
+            <div class="row div_topic">
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                    <a href="{{ path('topic',{'id':topic1.id_topic}) }}" class="lien_forum">{{ topic1.titre_topic }}</a>
+                </div>
+                <div class="col-md-3">
+                    {% if topic1.id_user != NULL %}
+                        {{ topic1.pseudo_user }}
+                    {% else %}
+                        Anonyme
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    <!-- Section Mise à jour -->
+    <section id="maj">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col">
+                <h1 class="titre_categorie">Mise à jour</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row div_topic">
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <h4>Titre</h4>
+            </div>
+            <div class="col-md-3">
+                <h4>Auteur</h4>
+            </div>
+        </div>
+        {% for topic2 in topics2 %}
+            <div class="row div_topic">
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                    <a href="{{ path('topic',{'id':topic2.id_topic}) }}" class="lien_forum">{{ topic2.titre_topic }}</a>
+                </div>
+                <div class="col-md-3">
+                    {% if topic2.id_user != NULL %}
+                        {{ topic2.pseudo_user }}
+                    {% else %}
+                        Anonyme
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    <!-- Section Astuce -->
+    <section id="astuce">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col">
+                <h1 class="titre_categorie">Astuce</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row div_topic">
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <h4>Titre</h4>
+            </div>
+            <div class="col-md-3">
+                <h4>Auteur</h4>
+            </div>
+        </div>
+        {% for topic3 in topics3 %}
+            <div class="row div_topic">
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                    <a href="{{ path('topic',{'id':topic3.id_topic}) }}" class="lien_forum">{{ topic3.titre_topic }}</a>
+                </div>
+                <div class="col-md-3">
+                    {% if topic3.id_user != NULL %}
+                        {{ topic3.pseudo_user }}
+                    {% else %}
+                        Anonyme
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    {% if app.user %}
+    <!-- Formulaire de création de topic -->
+    <section>
+        {{ form_start(formTopic) }}
+            <div class="flex justify-content-center">
+                <label class="label_forum" for="categorie">Categorie:</label>
+                {{ form_widget(formTopic.idCategorie, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <br>
+            <div class="flex justify-content-center">
+                <label class="label_forum" for="titre">Titre de votre sujet:</label>
+                {{ form_widget(formTopic.titreTopic, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <br>
+            <div class="flex justify-content-center">
+                <label class="label_forum" for="texte">Votre texte:</label>
+            </div>
+            <div class="flex justify-content-center">
+                {{ form_widget(formTopic.texteTopic, {'attr': {'cols': '150', 'rows': '15'}}) }}
+            </div>
+            <br>
+            <div class="flex justify-content-center">
+                <button type="submit" class="btn btn_form">Envoyez</button>
+            </div>
+            <br>
+        {{ form_end(formTopic) }}
+    </section>
+    {% endif %}
+{% endblock %}

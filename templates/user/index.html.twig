@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion - Inscription{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/user.css') }}">{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="flex justify-content-center">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active onglet lien_onglet" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        aria-controls="home" aria-selected="true">Connexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link onglet lien_onglet" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                        aria-controls="profile" aria-selected="false">Inscription</a>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="tab-content col-md-7" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <form action="{{ path('connexion') }}" method="post">
+                        <label for="_username">Votre email:</label>
+                        <br>
+                        <input type="email" class="form-control form_connexion" id="username" name="_username" required>
+                        <br>
+                        <label for="_password">Votre mot de passe:</label>
+                        <br>
+                        <input type="password" name="_password" id="password" class="form-control form_connexion" required>
+                        <br>
+                        <input type="checkbox" name="_remember_me" checked>
+                        <label for="_remember_me">Se souvenir de moi</label>
+                        <br><br>
+                        <button type="submit" class="btn btn_form">Se connecter</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    {{ form_start(formInscription) }}
+                        <label for="nomUser">Votre nom:</label>
+                        <br>
+                        {{ form_widget(formInscription.nomUser, {'attr': {'class': 'form-control form_connexion'}}) }}
+                        <br>
+                        <label for="prenomUser">Votre prénom:</label>
+                        <br>
+                        {{ form_widget(formInscription.prenomUser, {'attr': {'class': 'form-control form_connexion'}}) }}
+                        <br>
+                        <label for="pseudoUser">Votre pseudo:</label>
+                        <br>
+                        {{ form_widget(formInscription.pseudoUser, {'attr': {'class': 'form-control form_connexion'}}) }}
+                        {{ form_errors(formInscription.pseudoUser) }}
+                        <br>
+                        <label for="emailUser">Votre adresse mail:</label>
+                        <br>
+                        {{ form_widget(formInscription.emailUser, {'attr': {'class': 'form-control form_connexion'}}) }}
+                        {{ form_errors(formInscription.emailUser) }}
+                        <br>
+                        <label for="password">Votre mot de passe:</label>
+                        <br>
+                        {{ form_widget(formInscription.password, {'attr': {'class': 'form-control form_connexion'}}) }}
+                        <br>
+                        <label for="password_confirm">Confirmer votre mot de passe:</label>
+                        <br>
+                        {{ form_widget(formInscription.password_confirm, {'attr': {'class': 'form-control form_connexion'}}) }}
+                        {{ form_errors(formInscription.password_confirm) }}
+                        <br>
+                        <label for="dateNaissance">Votre date de naissance:</label>
+                        <br>
+                        {{ form_widget(formInscription.dateNaissance, {'attr': {'class': 'form-control form_connexion'}}) }}
+                        <br><br>
+                        <button type="submit" class="btn btn_form">S'inscrire</button>
+                    {{ form_end(formInscription) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

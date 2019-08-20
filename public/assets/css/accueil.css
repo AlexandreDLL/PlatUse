@@ -1,0 +1,52 @@
+/* Parallax */
+.parallax{
+    background-image: url('../img/background_blanc_menu.jpg');
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Section */
+section{
+    margin-top: 0 !important;
+}
+.section_telecharger{
+    margin-top: 100px !important;
+}
+.img_jeu{
+    width: 95vw;
+    height: 75vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* width: 600px; */
+    /* height: 450px; */
+}
+@media (min-width: 768px){
+    .img_jeu{
+        width: 31vw;
+        height: 24vw;
+        box-shadow: 0 4px 13px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+/* Bouton télécharger */
+.btn_telecharger{
+    font-weight: bold;
+    font-size: 26px;
+    border: 2px outset #1fc21f;
+    border-radius: 15px;
+    background-color: white;
+    width: 250px;
+    height: 80px;
+}
+.btn_telecharger:hover{
+    background-color: #3a3636;
+    color: white;
+}
+.div_btn{
+    margin-top: 80px;
+    margin-bottom: 80px;
+}

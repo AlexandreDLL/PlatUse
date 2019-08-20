@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/accueil.css') }}">{% endblock %}
+
+{% block body %}
+
+    <div class="parallax"></div>
+
+    {% if message is defined %}
+        <div class="alert alert-success text-center" role="alert" style="margin-top:100px !important;">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    {% if erreur is defined %}
+        <div class="alert alert-danger text-center" role="alert" style="margin-top:100px !important;">
+            {{ erreur }}
+        </div>
+    {% endif %}
+    
+    <section>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <h3>Le premier niveau</h3>
+                <br>
+                <p id="resume">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga iure temporibus sit commodi? Sint quos voluptate necessitatibus, 
+                    minima quibusdam saepe. Architecto fuga aliquid ex in quidem accusantium deserunt vero voluptates, quos explicabo corporis sit 
+                    quasi possimus, ipsum, vitae praesentium corrupti debitis. Veritatis, eius. Perferendis, fuga voluptatem labore culpa at non 
+                    laboriosam ipsa ut odio natus. Perferendis ipsam soluta, vero, similique obcaecati modi asperiores ex voluptate, necessitatibus 
+                    quisquam saepe? Autem, minima. Tenetur soluta suscipit blanditiis quod, adipisci modi reiciendis ipsam assumenda corrupti aliquam 
+                    mollitia similique beatae, maiores consequuntur. Rem voluptatem reprehenderit libero quidem vitae nam id omnis, fugit recusandae, 
+                    voluptates illo voluptatibus unde accusantium magni ducimus. Enim ad illo officia vero doloremque laudantium perferendis accusantium 
+                    dipisci quasi pariatur aut, ducimus atque voluptas fugiat amet facilis aspernatur quae doloribus sit autem earum sunt. Beatae neque eum 
+                    facere obcaecati ullam necessitatibus corporis quaerat, aliquid natus animi nostrum doloremque nobis incidunt, et similique reprehenderit 
+                    perspiciatis reiciendis itaque officia repellat, harum culpa molestias. Iusto reprehenderit 
+                    vitae dolorum illo, voluptatibus laboriosam fugiat esse accusantium impedit, deserunt recusandae animi quaerat nam cum est libero maiores, 
+                    laudantium tenetur eos perferendis nobis.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <img id="img1" class="img_jeu" src="{{ asset('assets/img/niveau1.png') }}" alt="niveau 1">
+            </div>
+        </div>
+        <div class="row" style="margin-top:50px;">
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <img id="img2" class="img_jeu" src="{{ asset('assets/img/niveau2.png') }}" alt="niveau 2">
+            </div>
+            <div class="col-md-6">
+                <h3>Le second niveau</h3>
+                <br>
+                <p id="resume">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aut pariatur dolore accusantium architecto atque maxime, 
+                    officiis natus id quia adipisci possimus vitae repudiandae placeat velit autem nostrum incidunt repellat consequatur quis numquam 
+                    ullam quo fugiat ad! Vitae ratione velit vero voluptas quibusdam asperiores. Nisi dignissimos laudantium unde totam magnam nam earum 
+                    adipisci a asperiores maiores, ea cumque. Inventore hic ratione ipsa voluptate quae quibusdam libero adipisci similique? Ab nostrum 
+                    iure quam earum velit placeat delectus fuga accusantium odit laborum perferendis dolor blanditiis sed ullam odio cum repudiandae, 
+                    ex dicta consectetur, molestiae, laudantium rerum. Dolor laudantium, rem ex vitae et, nobis, commodi sapiente ad officia debitis aliquid omnis. 
+                    Dolores deserunt hic dolore mollitia ad facere eligendi quo aperiam quod, exercitationem velit, ab tenetur nulla harum tempora quaerat 
+                    illo excepturi expedita voluptatum ducimus obcaecati sapiente. Optio eaque laborum exercitationem animi aperiam adipisci, numquam at odit 
+                    voluptatibus sit, nihil incidunt amet magnam eveniet necessitatibus repudiandae sunt fuga impedit atque error minus quasi. Iusto reprehenderit 
+                    vitae dolorum illo, voluptatibus laboriosam fugiat esse accusantium impedit, deserunt recusandae animi quaerat nam cum est libero maiores, 
+                    laudantium tenetur eos perferendis nobis. Autem sint, perferendis fugit, earum ipsam recusandae rem illum corporis deleniti quis incidunt culpa fugiat!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/accueil.js') }}"></script>
+    {% endblock %}
+{% endblock %}

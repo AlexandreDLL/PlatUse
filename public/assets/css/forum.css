@@ -1,0 +1,38 @@
+section{
+    margin-top: 100px;
+    background-color: #ecefef;
+    border-top: 1px solid  #1fc21f;
+    border-bottom: 1px solid  #1fc21f;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.lien_forum{
+    text-decoration: none !important;
+    color: #1fc21f;
+}
+.lien_forum:hover{
+    color: green;
+}
+.titre_categorie{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.div_topic{
+    border-top: 1px solid #3a3636;
+    padding: 10px 0 10px 0;
+}
+
+/* Formulaire Topic */
+.label_forum{
+    font-weight: bold;
+    margin-right: 10px;
+}
+.btn_form{
+    border: 1px outset #1fc21f;
+    border-radius: 15px;
+    background-color: white;
+    width: 20%;
+}
+.btn_form:hover{
+    background-color: #3a3636;
+    color: white;
+}

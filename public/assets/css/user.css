@@ -1,0 +1,19 @@
+/* Formulaire connexion/inscription */
+.lien_onglet{
+    color: #3a3636 !important;
+}
+a.active{
+    color: #1fc21f !important;
+}
+.form_connexion{
+    width: 30% !important;
+}
+.div_score{
+    border-bottom: 1px solid #1fc21f;
+    padding: 10px 0 10px 0;
+}
+
+/* Formulaire d'update user */
+.form_update{
+    width: 60% !important;
+}
